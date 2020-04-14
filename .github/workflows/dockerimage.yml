@@ -17,4 +17,4 @@ jobs:
     - name: Publish to Dockerhub
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker upload xgui3783/pptr-docker:${{ github.GITHUB_REF }}
+        docker upload ${{ env.DOCKER_IMAGE_TAG }}
