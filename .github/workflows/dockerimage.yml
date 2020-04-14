@@ -12,4 +12,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . -t xgui3783/pptr-docker:${{ github.GITHUB_REF }}
     - name: Publish to Dockerhub
-      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && docker upload ${{ secrets.DOCKER_USERNAME }}/pptr-docker:${{ github.GITHUB_REF }}
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && docker upload xgui3783/pptr-docker:${{ github.GITHUB_REF }}
