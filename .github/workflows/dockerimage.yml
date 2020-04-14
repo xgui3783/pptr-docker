@@ -17,4 +17,4 @@ jobs:
     - name: Publish to Dockerhub
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker upload ${{ env.DOCKER_IMAGE_TAG }}
+        docker push ${{ env.DOCKER_IMAGE_TAG }}
