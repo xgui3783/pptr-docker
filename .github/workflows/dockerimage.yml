@@ -4,12 +4,17 @@ on:
   release:
     types: [created]
 
+env:
+  DOCKER_IMAGE_TAG: ${{ secrets.DOCKER_USERNAME }}/pptr-docker:${{ env.GITHUB_REF }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . -t xgui3783/pptr-docker:${{ github.GITHUB_REF }}
+      run: docker build . -t ${{ env.DOCKER_IMAGE_TAG }}
     - name: Publish to Dockerhub
-      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && docker upload xgui3783/pptr-docker:${{ github.GITHUB_REF }}
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker upload xgui3783/pptr-docker:${{ github.GITHUB_REF }}
