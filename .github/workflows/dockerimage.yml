@@ -5,7 +5,7 @@ on:
     types: [created]
 
 env:
-  DOCKER_IMAGE_TAG: ${{ secrets.DOCKER_USERNAME }}/pptr-docker:${{ github.ref }}
+  DOCKER_IMAGE_TAG: ${{ secrets.DOCKER_USERNAME }}/pptr-docker:${{ github.sha }}
 
 jobs:
   build:
